@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dropdown list using javascript</title>
+ 
+    <style>
+ body {
+    font-size: 20px;
+    font-weight: 500;
+    font-family: sans-serif;
+}
+
+ul li {
+    list-style: none; 
+}
+
+.list span {
+    cursor: pointer;
+}
+
+.hide::before {
+    content: "+"; 
+}
+
+.show::before {
+    content: "-"; 
+}    
+    </style>
+</head>
+ 
+<body>
+    <ul class="list" id="list">
+        <li>Книги
+          <ul>
+            <li>Отечественные
+              <ul>
+                <li>Детективы</li>
+                <li>Научная фантастика</li>
+                <li>Исторические</li>
+              </ul>
+            </li>
+            <li>Зарубежные
+                <ul>
+                  <li>Детективы</li>
+                  <li>Научная фантастика</li>
+                  <li>Исторические</li>
+                </ul>
+              </li>
+          </ul>
+        </li>
+      
+        <li>DVD
+          <ul>
+            <li>Отечественные
+              <ul>
+                <li>Детективы</li>
+                <li>Научная фантастика</li>
+                <li>Исторические</li>
+              </ul>
+            </li>
+            <li>Зарубежные
+                <ul>
+                  <li>Детективы</li>
+                  <li>Научная фантастика</li>
+                  <li>Исторические</li>
+                </ul>
+              </li>
+          </ul>
+        </li>
+ 
+    <script>
+ for (let li of list.querySelectorAll('li')) {
+    let span = document.createElement('span'); 
+    span.classList.add('show');
+    li.prepend(span); 
+    span.append(span.nextSibling) 
+}
+ list.onclick = function(event) {
+    if (event.target.tagName != 'SPAN') return;
+
+    let childrenList = event.target.parentNode.querySelector('ul');
+    if(!childrenList){
+        alert("https://wikipedia.com");
+        return;
+    }
+    childrenList.hidden = !childrenList.hidden;
+
+    if (childrenList.hidden) {
+        event.target.classList.add('hide');
+        event.target.classList.remove('show');
+    }
+
+    else {
+        event.target.classList.add('show');
+        event.target.classList.remove('hide');
+    }
+}  
+    </script>
+</body>
+</html>
